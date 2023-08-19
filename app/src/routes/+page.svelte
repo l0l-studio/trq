@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+    import { PUBLIC_BOT_URL, PUBLIC_BOT_SUBPROTOCOL } from '$env/static/public'
 
 	let ws: WebSocket | null;
 	let chatInput = '';
@@ -25,7 +26,7 @@
 		if (ws) {
 			return;
 		}
-		ws = new WebSocket('ws://localhost:3000/echo', ['echo']);
+        ws = new WebSocket(`${PUBLIC_BOT_URL}`, [`${PUBLIC_BOT_SUBPROTOCOL}`]);
 		ws.onopen = function () {
 			console.log('ws opened');
 		};
@@ -47,7 +48,7 @@
 >
 	<iframe
 		title="stream"
-		src="https://player.twitch.tv/?channel=xanderjakeq&muted=true&parent=localhost"
+		src="https://player.twitch.tv/?channel=xanderjakeq&muted=false&parent=localhost"
 		allowfullscreen
 		class="grow-[3]"
 	/>
