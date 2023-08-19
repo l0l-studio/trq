@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-    import { PUBLIC_BOT_URL, PUBLIC_BOT_SUBPROTOCOL } from '$env/static/public'
+	import { PUBLIC_BOT_URL, PUBLIC_BOT_SUBPROTOCOL } from '$env/static/public';
+	import { page } from '$app/stores';
+
+	const parent = $page.url.hostname;
+	const user = 'xanderjakeq';
 
 	let ws: WebSocket | null;
 	let chatInput = '';
@@ -19,14 +23,14 @@
 		}
 
 		ws.send(chatInput);
-        chatInput = '';
+		chatInput = '';
 	}
 
 	onMount(() => {
 		if (ws) {
 			return;
 		}
-        ws = new WebSocket(`${PUBLIC_BOT_URL}`, [`${PUBLIC_BOT_SUBPROTOCOL}`]);
+		ws = new WebSocket(`${PUBLIC_BOT_URL}`, [`${PUBLIC_BOT_SUBPROTOCOL}`]);
 		ws.onopen = function () {
 			console.log('ws opened');
 		};
@@ -48,7 +52,7 @@
 >
 	<iframe
 		title="stream"
-		src="https://player.twitch.tv/?channel=xanderjakeq&muted=false&parent=localhost"
+		src={`https://player.twitch.tv/?channel=${user}&muted=false&parent=${parent}`}
 		allowfullscreen
 		class="grow-[3]"
 	/>
@@ -74,16 +78,16 @@
 					bind:value={chatInput}
 					placeholder="ask me anything"
 					class="
-                w-[100%]
-                h-[100%]
-                rounded-sm
-                p-2
-                border-2
-                border-yellow-400
-                resize-none
-                focus:outline-none
-                focus:border-yellow-800
-                "
+                    w-[100%]
+                    h-[100%]
+                    rounded-sm
+                    p-2
+                    border-2
+                    border-yellow-400
+                    resize-none
+                    focus:outline-none
+                    focus:border-yellow-800
+                    "
 				/>
 				<div
 					class="
@@ -106,7 +110,7 @@
 		</div>
 		<iframe
 			title="stream"
-			src="https://www.twitch.tv/embed/xanderjakeq/chat?parent=localhost&darkpopout"
+			src={`https://www.twitch.tv/embed/${user}/chat?parent=${parent}&darkpopout`}
 			id="chat"
 			class="
             pointer-events-none
