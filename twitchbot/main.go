@@ -11,43 +11,22 @@ import (
 	"net/http"
 )
 
-//func main() {
-//	//// or client := twitch.NewAnonymousClient() for an anonymous user (no write capabilities)
-//	//client := twitch.NewClient("trq", "oauth:tz6ki2j98b13gdpea4n5uftatq0f7m")
-//
-//	//client.OnPrivateMessage(func(message twitch.PrivateMessage) {
-//	//	fmt.Println(message.Message)
-//	//})
-//
-//	//client.Say("xanderjakeq", "hello")
-//
-//	////make this
-//	//client.Join("xanderjakeq")
-//
-//	//err := client.Connect()
-//	//if err != nil {
-//	//	panic(err)
-//	//}
-//
-//	log.SetFlags(0)
-//
-//	err := run()
-//	if err != nil {
-//		log.Fatal(err)
-//	}
-//}
-
 var addr = flag.String("addr", "localhost:8080", "http service address")
 
 var upgrader = websocket.Upgrader{
 	Subprotocols: []string{"echo"},
+    CheckOrigin: func (r *http.Request) bool  {
+        return true
+    },
 } // use default options
 
 func twHandler(tw *twitch.Client) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
+		//enableCors(&w)
 
 		c, err := upgrader.Upgrade(w, r, nil)
 
+		fmt.Println("running")
 		fmt.Println(c.Subprotocol())
 		if err != nil {
 			log.Print("upgrade:", err)
@@ -55,11 +34,11 @@ func twHandler(tw *twitch.Client) http.HandlerFunc {
 		}
 		defer c.Close()
 
-		//make this
+		//make this dynamic
 		tw.Join("xanderjakeq")
 
 		for {
-			mt, message, err := c.ReadMessage()
+			_, message, err := c.ReadMessage()
 			if err != nil {
 				log.Println("read:", err)
 
@@ -69,7 +48,7 @@ func twHandler(tw *twitch.Client) http.HandlerFunc {
 
 			tw.Say("xanderjakeq", string(message))
 
-			err = c.WriteMessage(mt, message)
+			//err = c.WriteMessage(mt, message)
 			if err != nil {
 				log.Println("write:", err)
 				break
@@ -80,7 +59,12 @@ func twHandler(tw *twitch.Client) http.HandlerFunc {
 }
 
 func home(w http.ResponseWriter, r *http.Request) {
-	homeTemplate.Execute(w, "ws://"+r.Host+"/echo")
+	homeTemplate.Execute(w, "ws://"+r.Host+"/trq")
+}
+
+func enableCors(w *http.ResponseWriter) {
+	//Todo make this dynamic and allow multipe origins
+	(*w).Header().Set("Access-Control-Allow-Origin", "http://localhost:5173")
 }
 
 func main() {
@@ -103,9 +87,8 @@ func main() {
 	flag.Parse()
 	log.SetFlags(0)
 
-
 	fmt.Printf("running %v", *addr)
-	http.HandleFunc("/echo", twHandler(client))
+	http.HandleFunc("/trq", twHandler(client))
 	//http.HandleFunc("/echo", echo)
 	http.HandleFunc("/", home)
 	log.Fatal(http.ListenAndServe(*addr, nil))
