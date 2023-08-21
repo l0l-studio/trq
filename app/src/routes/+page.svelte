@@ -3,6 +3,7 @@
 	import { browser } from '$app/environment';
 	import { accessToken, validationPromise } from '$lib/stores/auth';
 	import LandingPage from '$lib/components/LandingPage.svelte';
+	import ProfileCard from '$lib/components/ProfileCard.svelte';
 
 	if (browser) {
 		const hash = $page.url.hash;
@@ -18,6 +19,7 @@
 		<p>loading</p>
 	{:then data}
 		<h2>{data.login}</h2>
+		<ProfileCard />
 		<p>profile stuff here</p>
 	{:catch}
 		<div
