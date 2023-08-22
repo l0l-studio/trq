@@ -1,9 +1,17 @@
 {
   "imports": {
-    "oak": "https://deno.land/x/oak/mod.ts"
+    "oak": "https://deno.land/x/oak/mod.ts",
+    "drizzle-orm": "npm:drizzle-orm",
+    "drizzle-orm/libsql": "npm:drizzle-orm/libsql",
+    "drizzle-orm/sqlite-core": "npm:drizzle-orm/sqlite-core",
+    "@libsql/client": "npm:@libsql/client",
+    "dotenv": "https://deno.land/x/dotenv/mod.ts",
+    "$lib/": "./src/lib/"
   },
   "tasks": {
-    "dev": "deno run --allow-net --watch src/main.ts"
+    "dev": "deno run --allow-net --allow-read --allow-env --watch src/main.ts",
+    "drizzle:schema": "drizzle-kit introspect:sqlite --driver=turso --url=$TURSO_DB_URL --auth-token=$TURSO_TOKEN --out=./src/lib/drizzle",
+    "atlas:apply:turso": "atlas schema apply --env turso --to file://./atlas/schema.hcl"
   },
     "lint": {
     "include": ["src/"],
