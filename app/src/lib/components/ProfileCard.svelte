@@ -24,7 +24,7 @@
 		if (userData) {
 			data = {
 				displayName: userData.display_name,
-				// github: userData.profile_image_url,
+				github: userData.id,
 				website: userData.profile_image_url,
 				bio: userData.description,
 				email: userData.email
@@ -33,12 +33,23 @@
 	});
 </script>
 
-<div class="card rounded-md shadow-2xl bg-purple-500 hover:bg-purple-600 p-6">
-	<h2>{data.displayName}</h2>
-	<p>{data.bio}</p>
-	<p>{data.email}</p>
-	<img src={data.website} alt="profile image" />
-	<p>{data.github}</p>
+<div class="relative">
+	<div>
+		<img
+			class="rounded-full absolute top-0 left-0 z-10 w-16 h-16 border-4 border-purple-400"
+			src={data.website}
+			alt="profilePic"
+		/>
+	</div>
+	<div
+		class="card justify-start border-4 border-purple-400 rounded-md shadow-2xl bg-white p-6"
+		style="padding-left: 5rem;"
+	>
+		<h2 class="text-2xl font-bold mb-2">{data.displayName}</h2>
+		<p class="text-gray-700 text-base">{data.bio}</p>
+		<p class="text-gray-700 text-base">{data.email}</p>
+		<p class="text-gray-700 text-base">{data.github}</p>
+	</div>
 </div>
 
 <style>
@@ -47,6 +58,6 @@
 	}
 
 	.card:hover {
-		background-color: #9427b0;
+		background-color: #f3f4f6;
 	}
 </style>
