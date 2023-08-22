@@ -2,11 +2,11 @@
 	// Other script logic for your LandingPage component
 </script>
 
-<div class="flex justify-center text-center items-center min-h-screen bg-green-100">
-	<div class="max-w-xl p-8 bg-white shadow-lg rounded-lg text-center justify-center mx-auto">
+<div class="flex items-center justify-center min-h-screen">
+	<div class="w-full p-8 bg-black shadow-lg rounded-lg text-center">
 		<h1 class="text-3xl font-bold mb-4">trq</h1>
 
-		<div>
+		<div class="text-left">
 			<p>
 				Ever thought of using Twitch to show off your coding skills? You might already be doing it.
 				What if you send a link to your stream in your job applications? How will you know
