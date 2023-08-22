@@ -2,26 +2,30 @@ schema "main" {
 }
 
 table "users" {
-  schema = schema.main
-  column "id" {
-    type = integer
-    auto_increment = true
-  }
-  column "username" {
-    null = true
-    type = varchar(255)
-  }
-  primary_key {
-    columns = [
-      column.id
-    ]
-  }
-  index "idx_name" {
-    columns = [
-      column.username
-    ]
-    unique = true
-  }
+    schema = schema.main
+    column "id" {
+        type = integer
+        auto_increment = true
+    }
+    column "username" {
+        null = false
+        type = varchar(255)
+    }
+    column "email" {
+        null = false
+        type = varchar(319)
+    }
+    primary_key {
+        columns = [
+            column.id
+        ]
+    }
+    index "idx_name" {
+        columns = [
+            column.username
+        ]
+        unique = true
+    }
 }
 
 table "pages" {

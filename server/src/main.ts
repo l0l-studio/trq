@@ -1,15 +1,15 @@
-import { Application, Router } from 'https://deno.land/x/oak/mod.ts';
+import { Application, Router } from 'oak';
 import { v1 } from './routers/v1/route.ts';
 
 const router = new Router();
 
-//router.use
 router.get('/', (ctx) => {
     ctx.response.body = `<!DOCTYPE html>
     <html>
-      <head><title>Hello oak!</title><head>
+      <head><title>trq api</title><head>
       <body>
-        <h1>Hello oak!</h1>
+        <h1>trq api</h1>
+        <a href="https://github.com/thelostcreatives/trq">github</a>
       </body>
     </html>
   `;
