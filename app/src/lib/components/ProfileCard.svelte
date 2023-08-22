@@ -33,22 +33,22 @@
 	});
 </script>
 
-<div class="relative">
+<div class="relative w-1/3">
 	<div>
 		<img
-			class="rounded-full absolute top-0 left-0 z-10 w-16 h-16 border-4 border-black"
+			class="rounded-lg absolute top-0 left-0 z-10 w-16 h-16 border-2 border-gray-300"
 			src={data.website}
 			alt="profilePic"
 		/>
 	</div>
 	<div
-		class="card justify-start border border-purple-500 rounded-md shadow-2xl bg-white p-6"
+		class="card justify-center border border-purple-600 rounded-md shadow-xl bg-black text-purple-600 p-6"
 		style="padding-left: 5rem;"
 	>
 		<h2 class="text-2xl font-bold mb-2">{data.displayName}</h2>
-		<p class="text-gray-700 text-base">{data.bio}</p>
-		<p class="text-gray-700 text-base">{data.email}</p>
-		<p class="text-gray-700 text-base">{data.github}</p>
+		<p class="text-purple-700 text-base">{data.bio}</p>
+		<p class="text-purple-700 text-base">{data.email}</p>
+		<p class="text-purple-700 text-base">{data.github}</p>
 	</div>
 </div>
 
@@ -58,6 +58,6 @@
 	}
 
 	.card:hover {
-		background-color: #f3f4f6;
+		background-color: #e36af9;
 	}
 </style>

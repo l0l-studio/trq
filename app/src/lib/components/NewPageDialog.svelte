@@ -25,22 +25,22 @@
 </script>
 
 <div
-	class="w-1/3 bg-white border border-purple-500 rounded-lg shadow-lg p-4 float-left"
+	class=" flex-col bg-black border border-purple-500 rounded-lg shadow-lg p-4 float-left"
 	style="margin: 0 auto;"
 >
-	<h1 class="font-bold text-lg mb-4">New Page</h1>
+	<h1 class="font-bold text-purple-500 text-lg mb-4">New Page</h1>
 	<div class="flex-col">
-		<label for="usernameInput" class="mb-2">Username:</label>
-		<input class="border p-2 bg-gray-100 mb-2" id="usernameInput" bind:value={page.username} />
-		<label for="notesInput" class="mb-2">Notes:</label>
+		<h2 class="mb-2 text-purple-600">Username:</h2>
+		<input class="border p-2 bg-purple-300 mb-2" id="usernameInput" bind:value={page.username} />
+		<h3 class="mb-2 text-purple-500">Notes:</h3>
 		<textarea
-			class="border p-2 bg-gray-100 resize-none mb-2"
+			class="border p-2 bg-purple-300 resize-none mb-2"
 			id="notesInput"
 			bind:value={page.notes}
 		/>
 	</div>
-	<!-- <button
-		class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
-		on:click={savePage}>Create Page</button
-	> -->
+	<button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
+		>Create Page</button
+	>
+	<!-- on:click={savePage} add that to button when server rdy -->
 </div>
