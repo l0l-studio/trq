@@ -36,13 +36,13 @@
 <div class="relative">
 	<div>
 		<img
-			class="rounded-full absolute top-0 left-0 z-10 w-16 h-16 border-4 border-purple-400"
+			class="rounded-full absolute top-0 left-0 z-10 w-16 h-16 border-4 border-black"
 			src={data.website}
 			alt="profilePic"
 		/>
 	</div>
 	<div
-		class="card justify-start border-4 border-purple-400 rounded-md shadow-2xl bg-white p-6"
+		class="card justify-start border border-purple-500 rounded-md shadow-2xl bg-white p-6"
 		style="padding-left: 5rem;"
 	>
 		<h2 class="text-2xl font-bold mb-2">{data.displayName}</h2>

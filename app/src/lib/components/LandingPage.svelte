@@ -1,12 +1,9 @@
 <script>
-	import ProfileCard from './ProfileCard.svelte';
-	let isLoggedIn = false;
-
 	// Other script logic for your LandingPage component
 </script>
 
-<div class="flex justify-center items-center min-h-screen bg-green-100">
-	<div class="max-w-xl p-8 bg-white shadow-lg rounded-lg">
+<div class="flex justify-center text-center items-center min-h-screen bg-green-100">
+	<div class="max-w-xl p-8 bg-white shadow-lg rounded-lg text-center justify-center mx-auto">
 		<h1 class="text-3xl font-bold mb-4">trq</h1>
 
 		<div>

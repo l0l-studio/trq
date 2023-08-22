@@ -4,6 +4,7 @@
 	import { accessToken, validationPromise } from '$lib/stores/auth';
 	import LandingPage from '$lib/components/LandingPage.svelte';
 	import ProfileCard from '$lib/components/ProfileCard.svelte';
+	import NewPageDialog from '$lib/components/NewPageDialog.svelte';
 
 	if (browser) {
 		const hash = $page.url.hash;
@@ -22,7 +23,9 @@
 			<h2 class=" justify-center">Welcome</h2>
 		</div>
 		<ProfileCard />
+
 		<p>profile stuff here</p>
+		<NewPageDialog />
 	{:catch}
 		<div
 			class="
