@@ -6,7 +6,8 @@
     "drizzle-orm/sqlite-core": "npm:drizzle-orm/sqlite-core",
     "@libsql/client": "npm:@libsql/client",
     "dotenv": "https://deno.land/x/dotenv/mod.ts",
-    "$lib/": "./src/lib/"
+    "$lib/": "./src/lib/",
+    "http_status": "https://deno.land/std@0.199.0/http/http_status.ts"
   },
   "tasks": {
     "dev": "deno run --allow-net --allow-read --allow-env --watch src/main.ts",
