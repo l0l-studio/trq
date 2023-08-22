@@ -35,6 +35,8 @@ add a `.env` file to the in the root dir
 TURSO_DB_URL=turso_db_url
 TURSO_SUBDOMAIN=turso_subdomain
 TURSO_TOKEN=turso_db_token //turso db tokens create [dbname]
+
+TWITCH_CLIENT_ID=twitch_app_client_id
 ```
 
 export `.env` variables to the current shell
