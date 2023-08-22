@@ -1,3 +1,4 @@
 twitchbot/.env
 twitchbot/out
 twitchbot/trq
+server/.env
