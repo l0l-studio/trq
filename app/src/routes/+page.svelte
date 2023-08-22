@@ -18,7 +18,9 @@
 	{#await $validationPromise}
 		<p>loading</p>
 	{:then data}
-		<h2>{data.login}</h2>
+		<div class="text-center">
+			<h2 class=" justify-center">Welcome</h2>
+		</div>
 		<ProfileCard />
 		<p>profile stuff here</p>
 	{:catch}
