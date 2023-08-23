@@ -4,6 +4,10 @@
 
 install:
 - [deno](https://deno.land/manual@v1.36.2/getting_started/installation)
+- [turso](https://docs.turso.tech/reference/turso-cli)
+- [atlas](https://atlasgo.io/getting-started/)
+- [drizzle-kit](https://docs.turso.tech/reference/turso-cli) global install
+  `pnpm add -g drizzle-kit`, might have to install more dependencies globally
 
 ## development
 
@@ -25,12 +29,9 @@ deno task lint
 
 ## database
 
-- [turso](https://docs.turso.tech/reference/turso-cli)
-- [atlas](https://atlasgo.io/getting-started/)
-- [drizzle-kit](https://docs.turso.tech/reference/turso-cli) global install
-  `pnpm add -g drizzle-kit`, might have to install more dependencies globally
-
 add a `.env` file to the in the root dir
+
+refer to turso cli to get these values
 ```
 TURSO_DB_URL=turso_db_url
 TURSO_SUBDOMAIN=turso_subdomain
@@ -54,9 +55,7 @@ deno task drizzle:schema
 
 ### running schema migrations
 
-make changes to `atlas/schema.hcl`
-
-apply changes to db
+make changes to `atlas/schema.hcl` then apply changes to db
 ```
-deno atlas:apply:turso
+deno task atlas:apply:turso
 ```
