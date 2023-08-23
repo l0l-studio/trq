@@ -56,7 +56,7 @@
 	class="
     flex
     flex-col
-    items-center
+    
     max-w-[80vw]
     m-auto
     "
@@ -69,7 +69,7 @@
     "
 	>
 		<a href="/">
-			<h1 class="text-2xl font-bold">trq</h1>
+			<h1 class="text-2xl font-bold text-center">trq</h1>
 		</a>
 		{#if pathname === '/'}
 			{#if !$authed}

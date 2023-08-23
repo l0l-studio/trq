@@ -3,6 +3,8 @@
 	import { browser } from '$app/environment';
 	import { accessToken, validationPromise } from '$lib/stores/auth';
 	import LandingPage from '$lib/components/LandingPage.svelte';
+	import ProfileCard from '$lib/components/ProfileCard.svelte';
+	import NewPageDialog from '$lib/components/NewPageDialog.svelte';
 
 	if (browser) {
 		const hash = $page.url.hash;
@@ -17,8 +19,16 @@
 	{#await $validationPromise}
 		<p>loading</p>
 	{:then data}
-		<h2>{data.login}</h2>
-		<p>profile stuff here</p>
+		<div class="text-center">
+			<h2 class=" justify-center">Welcome</h2>
+		</div>
+		<div class=" flex justify-evenly">
+			<ProfileCard />
+
+			<!-- <p>profile stuff here</p> -->
+			<NewPageDialog />
+			<ProfileCard />
+		</div>
 	{:catch}
 		<div
 			class="
