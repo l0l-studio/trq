@@ -13,6 +13,15 @@
 			$accessToken = hash.substring(14).split('&')[0];
 		}
 	}
+	let userData = {
+		displayName: 'John Doe',
+		github: 'johndoe',
+		website:
+			'https://comicvine.gamespot.com/a/uploads/original/11160/111605805/8687496-monkey_d__luffy__gear_5____updated_by_b_a_i_o_r_e_t_t_o_df3gezw-fullview.png',
+		bio: 'I am a software developer.',
+		email: 'john@johndoe.com'
+	};
+	// just for testing
 </script>
 
 {#if $validationPromise}
@@ -23,7 +32,7 @@
 			<h2 class=" justify-center">Welcome</h2>
 		</div>
 		<div class=" flex justify-evenly">
-			<ProfileCard />
+			<ProfileCard data={userData} />
 
 			<!-- <p>profile stuff here</p> -->
 			<NewPageDialog />

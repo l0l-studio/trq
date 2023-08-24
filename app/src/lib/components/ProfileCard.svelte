@@ -1,7 +1,4 @@
-<script>
-	import { onMount } from 'svelte';
-	import { accessToken } from '$lib/stores/auth';
-
+<script lang="ts">
 	export let data = {
 		displayName: '',
 		github: '',
@@ -9,28 +6,6 @@
 		bio: '',
 		email: ''
 	};
-
-	onMount(async () => {
-		const response = await fetch('https://api.twitch.tv/helix/users', {
-			headers: {
-				Authorization: `Bearer ${$accessToken}`,
-				'Client-ID': 'k1voln47iaefm5u78y2ljjmn9vnmug'
-			}
-		});
-
-		const responseData = await response.json();
-		const userData = responseData.data.length > 0 ? responseData.data[0] : null;
-
-		if (userData) {
-			data = {
-				displayName: userData.display_name,
-				github: userData.id,
-				website: userData.profile_image_url,
-				bio: userData.description,
-				email: userData.email
-			};
-		}
-	});
 </script>
 
 <div class="relative w-1/3">
@@ -42,13 +17,13 @@
 		/>
 	</div>
 	<div
-		class="card justify-center border border-purple-600 rounded-md shadow-xl bg-black text-purple-600 p-6"
+		class="card justify-center border border-blue-600 rounded-md shadow-xl bg-black text-blue-600 p-6"
 		style="padding-left: 5rem;"
 	>
 		<h2 class="text-2xl font-bold mb-2">{data.displayName}</h2>
-		<p class="text-purple-700 text-base">{data.bio}</p>
-		<p class="text-purple-700 text-base">{data.email}</p>
-		<p class="text-purple-700 text-base">{data.github}</p>
+		<p class="text-blue-700 text-base">{data.bio}</p>
+		<p class="text-blue-700 text-base">{data.email}</p>
+		<p class="text-blue-700 text-base">{data.github}</p>
 	</div>
 </div>
 
@@ -58,6 +33,6 @@
 	}
 
 	.card:hover {
-		background-color: #e36af9;
+		background-color: #6a74f9;
 	}
 </style>
