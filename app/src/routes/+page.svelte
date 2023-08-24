@@ -23,11 +23,8 @@
 			<h2 class=" justify-center">Welcome</h2>
 		</div>
 		<div class=" flex justify-evenly">
-			<ProfileCard />
-
 			<!-- <p>profile stuff here</p> -->
 			<NewPageDialog />
-			<ProfileCard />
 		</div>
 	{:catch}
 		<div
