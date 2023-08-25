@@ -37,6 +37,33 @@
 			<!-- <p>profile stuff here</p> -->
 			<NewPageDialog user={{}} savePage={() => {}} />
 			<ProfileCard />
+			<div class="flex">
+				{#each [0, 0, 0] as num}
+					<div class="bg-white shadow-md p-6 m-2 rounded-lg">
+						<h2 class="text-xl font-semibold mb-4">Profile Card</h2>
+
+						<div class="mb-4">
+							<p class="font-semibold">Display Name:</p>
+						</div>
+
+						<div class="mb-4">
+							<p class="font-semibold">Github:</p>
+						</div>
+
+						<div class="mb-4">
+							<p class="font-semibold">Website:</p>
+						</div>
+
+						<div class="mb-4">
+							<p class="font-semibold">Bio:</p>
+						</div>
+
+						<div class="mb-4">
+							<p class="font-semibold">Chat Placeholder:</p>
+						</div>
+					</div>
+				{/each}
+			</div>
 		</div>
 	{:catch}
 		<div
