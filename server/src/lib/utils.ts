@@ -13,7 +13,7 @@ export function respondWithError(
 export function respondWithData<T>(
     ctx: Context,
     code: number,
-    data: { data: Record<string, T> },
+    data: { data: T },
 ) {
     ctx.response.status = code;
     ctx.response.type = 'application/json';
