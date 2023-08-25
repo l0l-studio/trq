@@ -35,7 +35,7 @@
 			<ProfileCard data={userData} />
 
 			<!-- <p>profile stuff here</p> -->
-			<NewPageDialog />
+			<NewPageDialog user={{}} savePage={() => {}} />
 			<ProfileCard />
 		</div>
 	{:catch}
