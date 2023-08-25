@@ -67,9 +67,7 @@ usersRouter
             ctx,
             Status.OK,
             {
-                data: {
-                    user,
-                },
+                data: user,
             },
         );
     });
