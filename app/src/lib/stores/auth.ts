@@ -22,3 +22,10 @@ export const authed = writable(false);
 
 //TODO: type this properly
 export const validationPromise = writable<Promise<AccessTokenValidation> | null>();
+
+//TODO: type this properly
+export const userStore = writable({
+	github: '',
+	website: '',
+	bio: 'I am a software developer.',
+});

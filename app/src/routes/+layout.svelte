@@ -56,7 +56,7 @@
 	class="
     flex
     flex-col
-    
+
     max-w-[80vw]
     m-auto
     "
@@ -69,17 +69,18 @@
     "
 	>
 		<a href="/">
-			<h1 class="text-2xl font-bold text-center">trq</h1>
+			<h1 class="text-white text-2xl font-bold text-center">trq</h1>
 		</a>
 		{#if pathname === '/'}
 			{#if !$authed}
 				<a
 					href="https://id.twitch.tv/oauth2/authorize?response_type=token&client_id=k1voln47iaefm5u78y2ljjmn9vnmug&redirect_uri=http://localhost:5173&scope=user%3Aread%3Aemail"
+					class="text-white"
 				>
 					login
 				</a>
 			{:else}
-				<button on:click={logout}> logout </button>
+				<button on:click={logout} class="text-white"> logout </button>
 			{/if}
 		{/if}
 	</nav>
