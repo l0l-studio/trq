@@ -8,11 +8,8 @@
 	export let data: PageData;
 
 	const { url } = $page;
-
 	const parent = url.hostname;
-
-	//TODO: use page id to fetch user information
-	const user = data.user?.username || 'xanderjakeq';
+	const username = data.user?.username || 'xanderjakeq';
 
 	let ws: WebSocket | null;
 	let chatInput = '';
@@ -38,7 +35,7 @@
 		if (ws) {
 			return;
 		}
-		ws = new WebSocket(`${PUBLIC_BOT_URL}`, [`${PUBLIC_BOT_SUBPROTOCOL}`]);
+		ws = new WebSocket(`${PUBLIC_BOT_URL}/${username}`, [`${PUBLIC_BOT_SUBPROTOCOL}`]);
 		ws.onopen = function () {
 			console.log('ws opened');
 		};
@@ -61,7 +58,7 @@
 >
 	<iframe
 		title="stream"
-		src={`https://player.twitch.tv/?channel=${user}&muted=false&parent=${parent}`}
+		src={`https://player.twitch.tv/?channel=${username}&muted=false&parent=${parent}`}
 		allowfullscreen
 		class="grow-[3]"
 	/>
@@ -119,7 +116,7 @@
 		</div>
 		<iframe
 			title="stream"
-			src={`https://www.twitch.tv/embed/${user}/chat?parent=${parent}&darkpopout`}
+			src={`https://www.twitch.tv/embed/${username}/chat?parent=${parent}&darkpopout`}
 			id="chat"
 			class="
             pointer-events-none
@@ -128,7 +125,7 @@
 	</div>
 </div>
 
-<h1 class="text-2xl font-bold text-white py-5">{user}</h1>
+<h1 class="text-2xl font-bold text-white py-5">{username}</h1>
 
 <style lang="postcss">
 </style>

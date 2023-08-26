@@ -27,5 +27,5 @@ export const validationPromise = writable<Promise<AccessTokenValidation> | null>
 export const userStore = writable({
 	github: '',
 	website: '',
-	bio: 'I am a software developer.',
+	bio: 'I am a software developer.'
 });

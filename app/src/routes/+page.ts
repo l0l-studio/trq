@@ -15,11 +15,14 @@ export const load: PageLoad = async function (request) {
 		const userRes = await fetch('http://localhost:8080/api/v1/users', {
 			headers: { Authorization: 'Bearer ' + accessToken }
 		});
+		const user = (await userRes.json()).data;
 
-		const { data } = await userRes.json();
+		const pagesRes = await fetch(`http://localhost:8080/api/v1/pages?authorId=${user.id}`);
+		const pages = (await pagesRes.json()).data;
 
 		return {
-			user: data
+			user,
+			pages
 		};
 	} catch (_) {
 		return {
