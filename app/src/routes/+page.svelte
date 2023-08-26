@@ -1,4 +1,5 @@
 <script lang="ts">
+	import type { PageData } from './$types';
 	import { page } from '$app/stores';
 	import { browser } from '$app/environment';
 	import { accessToken, validationPromise } from '$lib/stores/auth';
@@ -6,6 +7,7 @@
 	import ProfileCard from '$lib/components/ProfileCard.svelte';
 	import NewPageDialog from '$lib/components/NewPageDialog.svelte';
 
+	export let data: PageData;
 	if (browser) {
 		const hash = $page.url.hash;
 
