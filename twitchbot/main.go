@@ -4,11 +4,13 @@ import (
 	//"fmt"
 	"flag"
 	"fmt"
-	"github.com/gempir/go-twitch-irc/v4"
-	"github.com/gorilla/websocket"
 	"html/template"
 	"log"
 	"net/http"
+	"strings"
+
+	"github.com/gempir/go-twitch-irc/v4"
+	"github.com/gorilla/websocket"
 )
 
 var addr = flag.String("addr", "localhost:8080", "http service address")
@@ -24,6 +26,9 @@ func twHandler(tw *twitch.Client) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		//enableCors(&w)
 
+        paths := strings.Split(r.URL.Path, "/")
+        channel := paths[len(paths) - 1];
+
 		c, err := upgrader.Upgrade(w, r, nil)
 
 		fmt.Println("running")
@@ -34,8 +39,7 @@ func twHandler(tw *twitch.Client) http.HandlerFunc {
 		}
 		defer c.Close()
 
-		//make this dynamic
-		tw.Join("xanderjakeq")
+		tw.Join(channel)
 
 		for {
 			_, message, err := c.ReadMessage()
@@ -44,11 +48,8 @@ func twHandler(tw *twitch.Client) http.HandlerFunc {
 
 				break
 			}
-			log.Printf("recv: %s", message)
 
-			tw.Say("xanderjakeq", string(message))
-
-			//err = c.WriteMessage(mt, message)
+			tw.Say(channel, string(message))
 			if err != nil {
 				log.Println("write:", err)
 				break
@@ -88,7 +89,7 @@ func main() {
 	log.SetFlags(0)
 
 	fmt.Printf("running %v", *addr)
-	http.HandleFunc("/trq", twHandler(client))
+	http.HandleFunc("/trq/", twHandler(client))
 	//http.HandleFunc("/echo", echo)
 	http.HandleFunc("/", home)
 	log.Fatal(http.ListenAndServe(*addr, nil))
