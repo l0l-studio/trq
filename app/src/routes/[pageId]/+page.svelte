@@ -1,16 +1,18 @@
 <script lang="ts">
+	import type { PageData } from './$types';
+
 	import { onMount } from 'svelte';
 	import { PUBLIC_BOT_URL, PUBLIC_BOT_SUBPROTOCOL } from '$env/static/public';
 	import { page } from '$app/stores';
 
-	const { url, params } = $page;
+	export let data: PageData;
+
+	const { url } = $page;
 
 	const parent = url.hostname;
-	const pageId = params.pageId;
 
 	//TODO: use page id to fetch user information
-	console.log(pageId);
-	const user = 'xanderjakeq';
+	const user = data.user?.username || 'xanderjakeq';
 
 	let ws: WebSocket | null;
 	let chatInput = '';
@@ -125,6 +127,8 @@
 		/>
 	</div>
 </div>
+
+<h1 class="text-2xl font-bold text-white py-5">{user}</h1>
 
 <style lang="postcss">
 </style>
