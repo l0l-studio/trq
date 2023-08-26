@@ -2,7 +2,7 @@
 	// Other script logic for your LandingPage component
 </script>
 
-<div class="flex items-center justify-center min-h-screen">
+<div class="text-white flex items-center justify-center min-h-screen">
 	<div class="w-full p-8 bg-black shadow-lg rounded-lg text-center">
 		<h1 class="text-3xl font-bold mb-4">trq</h1>
 
