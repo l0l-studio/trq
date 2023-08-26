@@ -8,7 +8,7 @@
 
 	const translator = short();
 	const shortUuid = translator.new();
-	let page = { id: shortUuid, user, notes: '' };
+	let page = { id: shortUuid, authorId: user.id, note: '' };
 
 	//TODO: move to utils
 	function copyToClipboard(text: string) {
@@ -29,7 +29,7 @@
 	<h1 class="font-bold text-purple-500 text-lg mb-4">{shortUuid}</h1>
 	<div class="flex-col">
 		<h3 class="mb-2 text-purple-500">Notes:</h3>
-		<textarea class="border p-2 resize-none mb-2" id="notesInput" bind:value={page.notes} />
+		<textarea class="border p-2 resize-none mb-2" id="notesInput" bind:value={page.note} />
 	</div>
 	<button
 		class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded"
