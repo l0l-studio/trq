@@ -1,5 +1,6 @@
 import { Application, Router } from 'oak';
 import { v1 } from './routers/v1/route.ts';
+import cors from '$lib/cors.ts';
 
 const router = new Router();
 
@@ -18,6 +19,8 @@ router.get('/', (ctx) => {
 router.use('/api/v1', v1.routes());
 
 const app = new Application();
+
+app.use(cors);
 app.use(router.routes());
 app.use(router.allowedMethods());
 

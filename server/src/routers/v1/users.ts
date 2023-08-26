@@ -70,4 +70,22 @@ usersRouter
                 data: user,
             },
         );
+    })
+    .get('/:id', async (ctx: Context) => {
+        const user: User = await db.select().from(users).where(
+            eq(users.id, ctx.params.id),
+        ).get();
+
+        if (!user) {
+            respondWithError(ctx, Status.NotFound, { error: 'not found' });
+            return;
+        }
+
+        respondWithData<User>(
+            ctx,
+            Status.OK,
+            {
+                data: user,
+            },
+        );
     });

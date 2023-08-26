@@ -27,26 +27,31 @@ pagesRouter
         ).limit(20).all();
 
         respondWithData<Page>(ctx, Status.OK, { data: pageList });
+        return;
     })
     .get('/:id', async (ctx: Context) => {
-        const page = await db.select().from(pages).where(
-            eq(pages.id, ctx.params.id),
-        ).get();
+        try {
+            const page = await db.select().from(pages).where(
+                eq(pages.id, ctx.params.id),
+            ).get();
 
-        if (!page) {
-            respondWithError(ctx, Status.NotFound, { error: 'not found' });
-            return;
+            if (!page) {
+                respondWithError(ctx, Status.NotFound, { error: 'not found' });
+                return;
+            }
+
+            respondWithData<Page>(ctx, Status.OK, { data: page });
+            console.log(page);
+        } catch (err) {
+            console.log(err);
         }
-
-        respondWithData<Page>(ctx, Status.Found, { data: page });
-        return;
     })
     .post('/', async (ctx: Context) => {
         const data = await ctx.request.body().value;
-        data;
 
         //TODO(@xanderjakeq): validate with zod instead?? maybe if it gets too
         //big
+        //
         if (!data.id || !data.authorId) {
             respondWithError(ctx, Status.BadRequest, {
                 error: 'missing value(s)',
@@ -58,7 +63,7 @@ pagesRouter
         //if (jwt.user.id === id)
 
         data.createdAt = Date.now();
-        let page = await db.insert(pages).values(data).returning().get();
+        const page = await db.insert(pages).values(data).returning().get();
 
         respondWithData<Page>(ctx, Status.Created, { data: page });
     });
